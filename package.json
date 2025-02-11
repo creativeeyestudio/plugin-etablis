@@ -1,10 +1,10 @@
 {
   "name": "etablis",
   "version": "1.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "Plugin de gestion des informations d'un établissement hôtel et/ou restaurant",
   "strapi": {
     "name": "etablis",
-    "description": "Description of Etablis plugin",
+    "description": "Plugin de gestion des informations d'un établissement hôtel et/ou restaurant",
     "kind": "plugin",
     "displayName": "Etablis"
   },
