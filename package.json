@@ -26,6 +26,9 @@
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1"
   },
+  "scripts": {
+    "test": "echo \"No tests available\" && exit 0"
+  },
   "author": {
     "name": "Creative Eye Studio"
   },
