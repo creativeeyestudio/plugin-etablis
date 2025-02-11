@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "channel_managers",
+  "info": {
+    "singularName": "channel",
+    "pluralName": "channels",
+    "displayName": "Channel Manager"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "lien": {
+      "type": "string"
+    }
+  }
+}
