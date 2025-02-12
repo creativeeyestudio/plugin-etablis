@@ -5,6 +5,7 @@ module.exports = [
     path: '/etablissement',
     handler: 'etablissement.find',
     config: {
+      auth: false,
       policies: [],
     },
   },

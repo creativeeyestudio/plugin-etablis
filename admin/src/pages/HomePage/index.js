@@ -4,12 +4,35 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { BaseHeaderLayout, Box, ContentLayout, Table, Thead, Tbody, Th, Tr, Td, LinkButton, Flex } from '@strapi/design-system';
-import Etablissement from '../Etablissement';
+import axios from 'axios';
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get('/etablis/etablissement');
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error);
+    return null;
+  }
+};
 
 const HomePage = () => {
+  const paddingSize = 4;
+
+  const [etablissement, setEtablissement] = useState();
+
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await fetchData();
+      setEtablissement(data);
+    };
+
+    loadData();
+  }, [])
+
   return (
     <Box>
       <BaseHeaderLayout 
@@ -30,86 +53,67 @@ const HomePage = () => {
           </Flex> 
         }/>
       <ContentLayout>
-        <Table footer={undefined}>
-          <Thead>
-            <Tr>
-              <Th children={"Content"} action={undefined}></Th>
-              <Th children={"Value"} action={undefined}></Th>
-            </Tr>
-          </Thead>
+        {etablissement ? <Table footer={undefined}>
           <Tbody>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Nom
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Nom"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.nom ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Type d'établissement
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Type d'établissement"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.type ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Adresse
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Adresse"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.adresse ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Code postal
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Code postal"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.code_postal ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Ville
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Ville"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.ville ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Téléphone
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Téléphone"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.telephone ?? ""}></Box>
               </Td>
             </Tr>
             <Tr>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}>
-                  Adresse E-Mail
-                </Box>
+                <Box paddingTop={paddingSize} paddingBottom={paddingSize} children={"Adresse E-Mail"}></Box>
               </Td>
               <Td>
-                <Box paddingTop={5} paddingBottom={5}></Box>
+                <Box children={etablissement?.email ?? ""}></Box>
               </Td>
             </Tr>
           </Tbody>
-        </Table>
+        </Table> : null}
+        
       </ContentLayout>
     </Box>
   );
