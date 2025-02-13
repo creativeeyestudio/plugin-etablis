@@ -13,6 +13,9 @@ module.exports = [
     method: "PUT",
     path: "/etablissement",
     handler: "etablissement.update",
-    config: { policies: [] },
+    config: { 
+      auth: false,
+      policies: [] 
+    },
   },
 ];

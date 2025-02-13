@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { BaseHeaderLayout, Box, ContentLayout, Table, Thead, Tbody, Th, Tr, Td, LinkButton, Flex } from '@strapi/design-system';
 import axios from 'axios';
+import UpdateEtablissement from '../UpdateEtablissement';
 
 const fetchData = async () => {
   try {
@@ -44,12 +45,9 @@ const HomePage = () => {
             <LinkButton
               children="Modifier les informations de l'établissement" 
               isExternal={false}
+              tag={UpdateEtablissement}
+              to="etablis/settings"
               size="M"></LinkButton>
-            <LinkButton 
-              children="Gérer les menus et cartes" 
-              isExternal={false}
-              size="M"
-              variant="secondary"></LinkButton>
           </Flex> 
         }/>
       <ContentLayout>
