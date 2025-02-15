@@ -1,6 +1,6 @@
 {
   "name": "etablis",
-  "version": "1.0.0",
+  "version": "1.0.1-rc1",
   "description": "Plugin de gestion des informations d'un établissement hôtel et/ou restaurant",
   "strapi": {
     "name": "etablis",
