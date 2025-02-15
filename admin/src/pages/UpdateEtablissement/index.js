@@ -7,7 +7,7 @@ const UpdateEtablissement = () => {
   const margin = 6;
   const [etablissement, setEtablissement] = useState({
     nom: "",
-    type: "Hôtel",
+    type: "",
     adresse: "",
     code_postal: "",
     ville: "",
@@ -37,26 +37,22 @@ const UpdateEtablissement = () => {
     const { name, value } = e.target;
     setEtablissement((prev) => ({
       ...prev,
-      [name]: value, // Met à jour le nom de l'etablissement
+      [name]: value,
     }));
   };
 
 
   const handleSave = async () => {
-    console.log(etablissement ?? "Not found");
-    
     try {
-      await axios.put("/etablis/etablissement", etablissement);
+      await axios.put("/etablis/etablissement/1", 
+        {'data': etablissement}
+      );
       notify({ type: "success", message: "Informations mises à jour !" });
       console.log("Updated");
     } catch (error) {
       console.error("Erreur lors de la sauvegarde :", error);
       notify({ type: "warning", message: "Échec de la mise à jour." });
     }
-  };
-
-  const handleFileChange = (files) => {
-    setEtablissement({ ...etablissement, logo: files[0] });
   };
 
   return (

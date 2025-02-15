@@ -1,21 +1,25 @@
-module.exports = [
-  // Etablissement
-  {
-    method: 'GET',
-    path: '/etablissement',
-    handler: 'etablissement.find',
-    config: {
-      auth: false,
-      policies: [],
-    },
-  },
-  {
-    method: "PUT",
-    path: "/etablissement",
-    handler: "etablissement.update",
-    config: { 
-      auth: false,
-      policies: [] 
-    },
-  },
-];
+module.exports = {
+  'pass-data': {
+    type: 'content-api',
+    routes: [
+      // Etablissement
+      {
+        method: 'GET',
+        path: '/etablissement',
+        handler: 'etablissement.find',
+        config: {
+          policies: [],
+        },
+      },
+      
+      {
+        method: "PUT",
+        path: "/etablissement",
+        handler: "etablissement.update",
+        config: {
+          policies: [] 
+        },
+      },
+    ]
+  }
+};
