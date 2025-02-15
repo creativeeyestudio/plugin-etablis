@@ -39,11 +39,6 @@
     "email": {
       "type": "email",
       "required": true
-    },
-    "logo": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
     }
   }
 }

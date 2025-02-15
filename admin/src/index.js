@@ -3,11 +3,16 @@ import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 import Initializer from './components/Initializer';
 import PluginIcon from './components/PluginIcon';
+import contentTypes from "./content-types";
 
 const name = pluginPkg.strapi.name;
 
 export default {
   register(app) {
+    contentTypes.forEach(contentType => {
+      app.addContentType(contentType);
+    });
+
     // app.addMenuLink({
     //   to: `/plugins/${pluginId}`,
     //   icon: PluginIcon,
